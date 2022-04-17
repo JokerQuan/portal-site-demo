@@ -1,0 +1,70 @@
+.content {
+    background-color: #17265088;
+    padding: 20px;
+    height: 600px;
+}
+
+.scan-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.scan-box.active .scan {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 600px;
+    height: 300px;
+    outline: #1890ff solid 1px;
+    overflow: hidden;
+}
+
+.scan-box.active .scan::before{
+    position: absolute;
+    content: "";
+    width: 600px;
+    height: 300px;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to bottom, #1890ff00, #1890ff99);
+    animation: move 5s ease-in-out infinite;
+}
+
+.scan-box.active .small {
+    width: 300px;
+}
+
+@keyframes move {
+    from{top:-320px}  /*网格移动到显示区域的外面*/
+    to{top:300px}
+}
+
+.detail-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+
+    .fp-type {
+        font-size: 28px;
+        color: white;
+    }
+
+    .divider {
+        height: 3px;
+        width: 220px;
+        background-color: #1890ff;
+    }
+
+    .detail-item {
+        font-size: 16px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+    }
+}

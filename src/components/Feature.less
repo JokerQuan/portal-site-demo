@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .sub-title {
+    font-size: 20px;
+    color: #808080;
+  }
+
+  .feature-container {
+    margin-top: 30px;
+    padding: 0 100px;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .feature-card {
+      border-radius: 3px;
+      box-shadow: 0 0 5px #AAAAAAAA;
+      cursor: pointer;
+
+      .description {
+        height: 110px;
+        padding-bottom: 20px;
+      }
+
+      .go-detail {
+        color: #1890ff;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        display: none;
+      }
+    }
+
+    .feature-card:hover {
+      transform: scale(110%);
+
+      .go-detail {
+        display: block;
+      }
+    }
+
+    .feature-card,
+    .feature-card:hover {
+      transition: all 0.3s;
+    }
+  }
+}
