@@ -3,19 +3,19 @@ const menuConfig = [{
   groupName : "票据识别服务",
   items : [{
     itemKey : "1-1",
-    itemName : "国内发票识别",
+    itemName : "通用票据识别",
     link : "/"
   }, {
     itemKey : "1-2",
-    itemName : "购物票识别",
-    link : "/"
+    itemName : "增值税发票识别",
+    link : "/sample/vat_invoice"
   },{
     itemKey : "1-3",
-    itemName : "国际发票识别",
-    link : "/"
+    itemName : "定额发票识别",
+    link : "/sample/quota_invoice"
   },{
     itemKey : "1-4",
-    itemName : "多票识别",
+    itemName : "医疗发票识别",
     link : "/"
   },{
     itemKey : "1-5",
@@ -28,7 +28,7 @@ const menuConfig = [{
   items : [{
     itemKey : "2-1",
     itemName : "通用文字识别",
-    link : "/sample"
+    link : "/sample/text_identification"
   }, {
     itemKey : "2-2",
     itemName : "通用表格识别",
@@ -39,7 +39,7 @@ const menuConfig = [{
   groupName : "卡证识别",
   items : [{
     itemKey : "3-1",
-    itemName : "身份证识别",
+    itemName : "通信行程卡识别",
     link : "/"
   }, {
     itemKey : "3-2",

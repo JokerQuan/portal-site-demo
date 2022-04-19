@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Dropdown, Image, Menu } from 'antd';
 import { PhoneOutlined } from '@ant-design/icons';
 import logo from "../assets/logo192.png";
-import menuConfig from "../menuConfig";
+import menuConfig from "../config/menuConfig";
 import { Link } from 'react-router-dom'
 
 const getSubMenu = (subMenus) => (
@@ -10,7 +10,7 @@ const getSubMenu = (subMenus) => (
     {
       subMenus.map(menu => (
         <Link key={menu.itemKey} to={menu.link}>
-          <Menu.Item>
+          <Menu.Item key={menu.itemKey}>
             {menu.itemName}
           </Menu.Item>
         </Link>
@@ -28,7 +28,7 @@ const TopMenu = () => {
         </Link>
         {
           menuConfig.map(group => (
-            group.link ? <span className='nav1'>{group.groupName}</span> :
+            group.link ? <span key={group.groupKey} className='nav1'>{group.groupName}</span> :
             <Dropdown 
               key={group.groupKey}
               overlay={getSubMenu(group.items)} 

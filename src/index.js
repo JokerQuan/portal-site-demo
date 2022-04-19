@@ -9,7 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
       <Routes>
-        <Route path="/sample" element={<SamplePage />} />
+        <Route path="/sample/:type" element={<SamplePage />} />
         <Route path="/" element={<App />} />
       </Routes>
     </HashRouter>

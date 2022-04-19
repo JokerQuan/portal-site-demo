@@ -21,3 +21,23 @@ export const accurate = (access_token, image) => {
     headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
   });
 }
+
+//定额发票识别
+export const quotaInvoice = (access_token, image) => {
+  return axios.post(`quota_invoice?access_token=${access_token}`, 
+  qs.stringify({image}),
+  {
+    baseURL,
+    headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
+  });
+}
+
+//定额发票识别
+export const vatInvoice = (access_token, image) => {
+  return axios.post(`vat_invoice?access_token=${access_token}`, 
+  qs.stringify({image}),
+  {
+    baseURL,
+    headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
+  });
+}

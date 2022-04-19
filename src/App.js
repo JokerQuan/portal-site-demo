@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Layout, Menu } from 'antd';
+import { useTitle } from 'ahooks';
 import './App.less';
 import Scanner from './components/Scanner';
 import Feature from './components/Feature';
@@ -10,6 +11,7 @@ const { Header, Content, Footer } = Layout;
 
 const App = () => {
   const headerRef = useRef();
+  useTitle("智能 AI");
 
   const handleScroll = () => {
     if (window.scrollY > 0) {

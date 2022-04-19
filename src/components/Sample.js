@@ -1,22 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { List, Image, Upload, Collapse, message, Spin } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { useLocalStorageState, useRequest } from 'ahooks';
+import { useLocalStorageState, useRequest, useTitle } from 'ahooks';
 import ReactJson from 'react-json-view';
-import test from '../assets/sample-pic.jpg';
 import './Sample.less';
-import { getAccessToken, accurate } from '../service/api';
+import { getAccessToken } from '../service/api';
 import { convertImgToBase64, convertLocalimgToBase64 } from '../utils/imageUtils';
+import SampleConfig from "../config/SampleConfig.js";
 
 const { Panel } = Collapse;
 
-const Sample = () => {
+const Sample = ({type}) => {
+  const [config, setConfig] = useState(SampleConfig[type]);
+  useTitle(config.title);
+  const ResultComponent = config.component;
   const [activeKey, setActiveKey] = useState("0");
   const [uploadLoading, setUploadLoading] = useState(false);
   const [ocrResult, setOcrResult] = useState({});
   const [uploadedList, setUploadedList] = useState([{
     key: "0",
-    url: test,
+    url: config.defaultPicUrl,
     type: "static"
   }]);
   const [accessToken, setAccessToken] = useLocalStorageState("baidu-ocr-access-token");
@@ -31,7 +34,7 @@ const Sample = () => {
     }
   });
 
-  const accurateReq = useRequest(accurate, {
+  const ocrReq = useRequest(config.orcReq, {
     manual: true
   });
 
@@ -39,14 +42,23 @@ const Sample = () => {
     if (!accessToken) {
       accessTokenReq.run();
     } else {
-      handleStaticImg(test, "0", true);
+      setConfig(SampleConfig[type]);
+      setActiveKey("0");
+      setUploadedList([{
+        key: "0",
+        url: SampleConfig[type].defaultPicUrl,
+        type: "static"
+      }]);
+      setOcrResult({});
+      handleStaticImg(SampleConfig[type].defaultPicUrl, "0", true);
     }
-  }, [accessToken]);
+  }, [accessToken, type]);
 
   const handleStaticImg = (url, key, isFirst) => {
+    if (key == activeKey && !isFirst) return;
     setUploadLoading(true);
     convertImgToBase64(url, (dataURL) => {
-      accurateReq.runAsync(accessToken, dataURL).then(data => {
+      ocrReq.runAsync(accessToken, dataURL).then(data => {
         setOcrResult(data.data);
         if (!isFirst) {
           message.success("识别成功");
@@ -66,10 +78,11 @@ const Sample = () => {
   }
 
   const handleLocalImg = (file, key) => {
+    if (key == activeKey) return;
     const isUploaded = uploadedList.findIndex(upload => upload.key == key) > -1;
     setUploadLoading(true);
     convertLocalimgToBase64(file, (dataURL) => {
-      accurateReq.runAsync(accessToken, dataURL).then(data => {
+      ocrReq.runAsync(accessToken, dataURL).then(data => {
         setOcrResult(data.data);
         message.success("识别成功");
         if (isUploaded) {
@@ -126,6 +139,7 @@ const Sample = () => {
               {
                 uploadedList.map(pic => (
                   <div 
+                    key={type + pic.key}
                     className={`pic-outter ${activeKey == pic.key ? "active" : ""}`}
                     onClick={() => pic.type == "static" ? handleStaticImg(pic.url, pic.key) : handleLocalImg(pic.file, pic.key)}
                   >
@@ -146,17 +160,7 @@ const Sample = () => {
           <Collapse accordion defaultActiveKey="1">
             <Panel header="识别结果" key="1">
               <div className='result-container'>
-                <List
-                size='small'
-                  bordered
-                  dataSource={ocrResult.words_result}
-                  renderItem={(item, index) => (
-                    <List.Item className='list-item'>
-                      <span className='name'>{index}</span>
-                      <span className='value'>{item.words}</span>
-                    </List.Item>
-                  )}
-                />
+                <ResultComponent dataSource={ocrResult[config.resultKeys]} />
               </div>
             </Panel>
             <Panel header="Response" key="2">
