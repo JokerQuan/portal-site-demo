@@ -4,44 +4,130 @@
     height: 600px;
 }
 
-.scan-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.scanner-outer {
+    background-image: url('../assets/scanner-outer.png');
+    background-size: 1000px 550px;
+    background-repeat: no-repeat;
+    width: 1000px;
+    height: 550px;
+
+    .scanner-pic {
+        position: absolute;
+        transform: rotate(-5deg);
+        outline: 2px solid #1890ffff;
+    }
+
+    .scanner-0 {
+        background-image: url('../assets/s0.png');
+        background-repeat: no-repeat;
+        background-size: 130px 220px;
+        width: 130px;
+        height: 220px;
+        top: 30px;
+        left: 240px;
+
+        &.active {
+            outline: 2px solid red;
+        }
+    }
+
+    .scanner-1 {
+        background-image: url('../assets/s1.png');
+        background-repeat: no-repeat;
+        background-size: 350px 200px;
+        width: 350px;
+        height: 200px;
+        top: 30px;
+        left: 420px;
+
+        &.active {
+            outline: 2px solid red;
+        }
+    }
+
+    .scanner-2 {
+        background-image: url('../assets/s2.png');
+        background-repeat: no-repeat;
+        background-size: 500px 230px;
+        width: 500px;
+        height: 230px;
+        top: 260px;
+        left: 190px;
+
+        &.active {
+            outline: 2px solid red;
+        }
+    }
+
+    .scanner-3 {
+        background-image: url('../assets/s3.png');
+        background-repeat: no-repeat;
+        background-size: 110px 300px;
+        width: 110px;
+        height: 300px;
+        top: 230px;
+        left: 720px;
+
+        &.active {
+            outline: 2px solid red;
+        }
+    }
 }
 
-.scan-box.active .scan {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 600px;
-    height: 300px;
-    outline: #1890ff solid 1px;
-    overflow: hidden;
-}
-
-.scan-box.active .scan::before{
-    position: absolute;
+.scanner-outer.scanning::before {
     content: "";
-    width: 600px;
-    height: 300px;
-    left: 0;
-    top: 0;
-    background: linear-gradient(to bottom, #1890ff00, #1890ff99);
-    animation: move 5s ease-in-out infinite;
-}
-
-.scan-box.active .small {
-    width: 300px;
+    position: absolute;
+    overflow: hidden;
+    z-index: 10;
+    width: 915px;
+    height: 0px;
+    margin: 45px;
+    background: linear-gradient(to bottom, #1890ff00, #1890ff33);
+    animation: move 3s ease infinite;
 }
 
 @keyframes move {
-    from{top:-320px}  /*网格移动到显示区域的外面*/
-    to{top:300px}
+    0% {
+        top: 0px;
+        height: 0px;
+    }
+    50% {
+        top: 130px;
+        height: 350px;
+    }
+    100% {
+        top: 500px;
+        height: 0px;
+    }
+}
+
+@keyframes show {
+    0%{
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.8;
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.detail-wrapper.show {
+    animation: show 5s ease-in-out infinite;
 }
 
 .detail-wrapper {
+    opacity: 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -66,5 +152,6 @@
         justify-content: space-between;
         align-items: center;
         gap: 30px;
+        margin-top: 10px;
     }
 }

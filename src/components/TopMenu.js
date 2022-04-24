@@ -3,13 +3,13 @@ import { Button, Dropdown, Image, Menu } from 'antd';
 import { PhoneOutlined } from '@ant-design/icons';
 import logo from "../assets/logo192.png";
 import menuConfig from "../config/menuConfig";
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
-const getSubMenu = (subMenus) => (
+const getSubMenu = (subMenus, isHome) => (
   <Menu>
     {
       subMenus.map(menu => (
-        <Link key={menu.itemKey} to={menu.link} target="_blank">
+        <Link key={menu.itemKey} to={isHome ? "/" : menu.link} target="_blank">
           <Menu.Item key={menu.itemKey}>
             {menu.itemName}
           </Menu.Item>
@@ -20,6 +20,7 @@ const getSubMenu = (subMenus) => (
 )
 
 const TopMenu = () => {
+  const location = useLocation();
   return (
     <>
       <div className='nav'>
@@ -31,7 +32,7 @@ const TopMenu = () => {
             group.link ? <span key={group.groupKey} className='nav1'>{group.groupName}</span> :
             <Dropdown 
               key={group.groupKey}
-              overlay={getSubMenu(group.items)} 
+              overlay={getSubMenu(group.items, location.pathname === "/")} 
               placement="bottom">
               <span className='nav1'>{group.groupName}</span>
             </Dropdown>

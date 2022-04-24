@@ -9,16 +9,14 @@ const ReceiptResult = ({dataSource}) => {
       <List
         size='small'
         bordered
-      >
-        {
-          dataSource.map((item, index) => (
-            <List.Item className='list-item'>
-              <span className='index'>{index}</span>
-              <span className='value'>{item.words}</span>
-            </List.Item>
-          ))
-        }
-      </List>
+        dataSource={dataSource}
+        renderItem={(item, index) => (
+          <List.Item className='list-item'>
+            <span className='index'>{index}</span>
+            <span className='value'>{item.words}</span>
+          </List.Item>
+        )}
+      />
     </>
   )
 }

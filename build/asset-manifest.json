@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.dfc989d0.css",
-    "main.js": "/static/js/main.3ccd9ba5.js",
+    "main.css": "/static/css/main.16e3854e.css",
+    "main.js": "/static/js/main.0333bfdf.js",
     "static/media/banner.png": "/static/media/banner.3fa5f394cefdc7bab87c.png",
     "static/media/sample-pic-vat-invoice.png": "/static/media/sample-pic-vat-invoice.b0334beee7e963c7c91d.png",
     "static/media/sample-pic-receipt.png": "/static/media/sample-pic-receipt.1bb38ec560ef5b5acb2a.png",
     "static/media/sample-pic-quota-invoice.png": "/static/media/sample-pic-quota-invoice.5264a4d0e3d54671bbd2.png",
+    "static/media/s2.png": "/static/media/s2.93692991211e7a25b0be.png",
+    "static/media/s1.png": "/static/media/s1.799b4b904a33f9e26a6c.png",
     "static/media/banner-1.jpg": "/static/media/banner-1.477409d27ffbe77b8804.jpg",
     "static/media/sample-pic-text.jpg": "/static/media/sample-pic-text.c62bce7140cc11e11c48.jpg",
-    "static/media/fp1.webp": "/static/media/fp1.79db82974bcdf6b12c8b.webp",
-    "static/media/fp3.webp": "/static/media/fp3.03dd297f8bc13ee0ad19.webp",
-    "static/media/fp2.webp": "/static/media/fp2.dac3db0ff68ec00399ca.webp",
-    "static/media/fp4.webp": "/static/media/fp4.ecdd727d037cfe09bec4.webp",
+    "static/media/s3.png": "/static/media/s3.593609690503f2ad3bd5.png",
+    "static/media/s0.png": "/static/media/s0.15d6775b44815e6e0cf7.png",
+    "static/media/scanner-outer.png": "/static/media/scanner-outer.d1aa27a9c2e27ea4ad04.png",
     "index.html": "/index.html",
-    "main.dfc989d0.css.map": "/static/css/main.dfc989d0.css.map",
-    "main.3ccd9ba5.js.map": "/static/js/main.3ccd9ba5.js.map"
+    "main.16e3854e.css.map": "/static/css/main.16e3854e.css.map",
+    "main.0333bfdf.js.map": "/static/js/main.0333bfdf.js.map"
   },
   "entrypoints": [
-    "static/css/main.dfc989d0.css",
-    "static/js/main.3ccd9ba5.js"
+    "static/css/main.16e3854e.css",
+    "static/js/main.0333bfdf.js"
   ]
 }
