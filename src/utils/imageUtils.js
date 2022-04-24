@@ -1,7 +1,7 @@
 export const convertImgToBase64 = (url, callback) => {
   let canvas = document.createElement("CANVAS");
   let ctx = canvas.getContext('2d');
-  let img = new Image;
+  let img = new Image();
   let outputFormat = url.substring(url.lastIndexOf(".") + 1).toLowerCase();
   img.crossOrigin = 'Anonymous';
   img.onload = () => {

@@ -1,10 +1,12 @@
 import samplePicText from '../assets/sample-pic-text.jpg';
 import samplePicQuotaInvoice from '../assets/sample-pic-quota-invoice.png';
 import samplePicVatInvoice from '../assets/sample-pic-vat-invoice.png';
-import { accurate, quotaInvoice, vatInvoice } from '../service/api';
+import samplePicReceipt from '../assets/sample-pic-receipt.png';
+import { accurate, quotaInvoice, receiptReq, vatInvoice } from '../service/api';
 import TextIdentificationResult from '../components/TextIdentificationResult.js';
 import QuotaInvoiceResult from '../components/QuotaInvoiceResult.js';
 import VatInvoiceResult from '../components/VatInvoiceResult';
+import ReceiptResult from '../components/ReceiptResult';
 
 
 
@@ -35,8 +37,20 @@ const vat_invoice = {
   description: "业内领先的OCR识别技术，自动识别发票上的信息要素，对票据建立索引并归档，大大提升工作效率。"
 }
 
-export default {
+const receipt = {
+  defaultPicUrl : samplePicReceipt,
+  orcReq : receiptReq,
+  resultKeys : 'words_result',
+  component : ReceiptResult,
+  title: "通用票据识别",
+  description: "业内领先的OCR识别技术，针对票据字体做了专项优化的通用文字识别版本，支持对医疗票据、银行兑票、购物小票等各类票据的票面内容进行识别。"
+}
+
+const SampleConfig = {
   text_identification,
   quota_invoice,
-  vat_invoice
+  vat_invoice,
+  receipt
 }
+
+export default SampleConfig;

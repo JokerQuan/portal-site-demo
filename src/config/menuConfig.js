@@ -4,7 +4,7 @@ const menuConfig = [{
   items : [{
     itemKey : "1-1",
     itemName : "通用票据识别",
-    link : "/"
+    link : "/sample/receipt"
   }, {
     itemKey : "1-2",
     itemName : "增值税发票识别",

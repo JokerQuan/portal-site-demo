@@ -9,7 +9,7 @@ const getSubMenu = (subMenus) => (
   <Menu>
     {
       subMenus.map(menu => (
-        <Link key={menu.itemKey} to={menu.link}>
+        <Link key={menu.itemKey} to={menu.link} target="_blank">
           <Menu.Item key={menu.itemKey}>
             {menu.itemName}
           </Menu.Item>
